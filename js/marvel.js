@@ -6,6 +6,8 @@ https://www.youtube.com/watch?v=7fbZEfYv6Fs&list=PLaEFB-zhBL5of8Dks-GrZrx7y4gfK6
 w3schools for CSS reference
 
 Search icon image: https://www.iconpacks.net/free-icon/search-2911.html
+
+Marvel logo on index.html: https://www.flickr.com/photos/ryanthescooterguy/49681949737
 */
 
 //wrap data from using it
