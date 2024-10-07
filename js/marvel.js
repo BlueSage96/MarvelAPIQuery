@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var marvel = {
         fetchData: function(name) {
-            const url = `${baseURL}?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${name}&limit=${limit}`;
-
+            var url = `${baseURL}?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${name}&limit=${limit}`;
+            console.log("Fetching data from: ", url);
             fetch(url)
                 .then(response => {
                     if (!response.ok) {

@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Loop through the comics array
             comics.forEach((comic) => {
-                fetch(`${comic.resourceURI}?ts=${ts}&apikey=${publicKey}&hash=${hash}`)
+                const comicUrl = `${comic.resourceURI}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+                fetch(comicUrl)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error(`API request failed with status: ${response.status}`);
