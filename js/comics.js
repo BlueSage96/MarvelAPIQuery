@@ -10,21 +10,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fetch character data from localStorage
     const characterData = JSON.parse(localStorage.getItem('characterData'));
-
     function fetchComics(page) {
         if (characterData) {
             document.getElementById('characterName').innerText = characterData.name;
-
+            
             // Get comics for the current page
             const comics = characterData.comics.slice(page * limit, (page + 1) * limit);
-
+            
             // Clear the previous results
             comicsList.innerHTML = '';
-
+            
             // Loop through the comics array
-            comics.forEach((comic) => {
-                const comicUrl = `${comic.resourceURI}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
-                fetch(comicUrl)
+            comics.forEach((comic, index) => {
+                // Replace http with https
+                const comicResourceURI = comic.resourceURI.replace('http://', 'https://');
+    
+                fetch(`${comicResourceURI}?ts=${ts}&apikey=${publicKey}&hash=${hash}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error(`API request failed with status: ${response.status}`);
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             const comicDetails = comicData.data.results[0];
                             const comicName = comicDetails.title;
                             let comicThumbnail = `${comicDetails.thumbnail.path}.${comicDetails.thumbnail.extension}`;
-
+                            
                             // Create list item for each comic
                             const listOfComics = document.createElement('li');
                             
@@ -44,18 +45,18 @@ document.addEventListener('DOMContentLoaded', function() {
                             const comicImage = document.createElement('img');
                             comicImage.src = comicThumbnail;
                             comicImage.alt = comicName;
-                            comicImage.loading = "lazy";
-
+                            comicImage.loading = "lazy"; // Lazy loading
+    
                             // Create a paragraph for the comic name
                             const comicTitle = document.createElement('p');
                             comicTitle.innerText = comicName;
                             comicTitle.style.fontSize = "30px";
-
+                            
                             // Check if image is not available, use stock image
                             if (comicThumbnail.includes("image_not_available")) {
                                 comicThumbnail = "images/marvel-stock-image.jpg";
                                 comicImage.src = comicThumbnail;
-
+                                
                                 // Add stock image label
                                 const stockImageLabel = document.createElement('p');
                                 stockImageLabel.innerText = "Stock image";
@@ -63,10 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                 stockImageLabel.style.fontSize = "24px";
                                 listOfComics.appendChild(stockImageLabel);
                             }
-
+    
                             // Error handling for broken images
                             comicImage.onerror = function() {
                                 comicImage.src = "images/marvel-stock-image.jpg";
+                                
                                 // Add stock image label if fallback triggers
                                 const stockImageLabel = document.createElement('p');
                                 stockImageLabel.innerText = "Stock image";
@@ -74,11 +76,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                 stockImageLabel.style.fontSize = "24px";
                                 listOfComics.appendChild(stockImageLabel);
                             };
-
+    
                             // Append the image and name to the list item
                             listOfComics.appendChild(comicTitle);
                             listOfComics.appendChild(comicImage);
-
+    
                             // Append the list item to the comics list
                             comicsList.appendChild(listOfComics);
                         } else {
@@ -93,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.innerHTML = '<h2>No character information found.</h2>';
         }
     }
+    
 
     // Initial fetch of comics for the first page
     fetchComics(currentPage);
