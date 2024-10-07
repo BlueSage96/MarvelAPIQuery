@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Avengers;
+}
+
+@font-face {
+    font-family: 'Avengers';
+    src: url("AVENGEANCE\ HEROIC\ AVENGER.ttf");
+}
+
+body{
+    background-color: blue;
+}
+
+body.dark-mode{
+    padding: 0;
+    margin: 0;
+}
+
+.dark-mode{
+    position: block;
+    background-color: black;
+    color: white;
+    margin-left: 20px;
+    margin-top: 0;
+    padding: 5px;
+    width: 100px;
+}
+
+h1#characterName{
+    margin: 20px 0 0 20px;/*top,right,bottom,left*/
+    width: 50%;
+}
+/* index.html */
+input[type=text]{
+  width: 180px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 24px;
+  background-image: url('images/searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 48px; /*top, right, bottom, left*/
+  margin: 6px 0;
+  transition: width 0.2s ease-in-out;
+}
+
+input[type=text]:focus{
+    width: 60%;
+    background-color: red;
+}
+
+#searchButton{
+    padding: 7px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+#searchButton:hover{
+    background-color: red;
+}
+
+#result{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#characterSearch{
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+/* info.html */
+#previousPage{
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+/*Grid layout for comics*/
+#comicsList{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px; /* Space between items */
+    padding: 0;
+    list-style: none;
+    margin-top: 20px;
+    margin-left: 60px;
+}
+
+#comicsList li{
+    text-align: center;
+}
+
+#comicsList img{
+    width: 200px;
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto 10px auto; /*Center the image & add margin*/
+}
+
+footer{
+    margin: 20px;
+}
