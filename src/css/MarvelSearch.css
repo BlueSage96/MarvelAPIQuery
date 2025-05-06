@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Avengers;
+}
+
+@font-face {
+    font-family: 'Avengers';
+    src: url("./assets/AVENGERS.ttf") format('truetype');
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: blue;
+}
+
+#title{
+    padding: 20px;
+    padding-top: 60px;
+    text-align: center;
+    font-size: 50px;
+}
+
+#searchForm{
+    margin: 20px;
+}
+
+characterName{
+    margin: 20px 0 0 20px;/*top,right,bottom,left*/
+    width: 50%;
+    font-size: 10px;
+}
+/* index.html */
+input[type=text]{
+  width: 180px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 24px;
+  background-image: url('../images/searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 48px; /*top, right, bottom, left*/
+  margin: 6px 0;
+  transition: width 0.2s ease-in-out;
+  margin-left: 475px;
+}
+
+input[type=text]:focus{
+    width: 47%;
+    background-color: red;
+}
+
+#searchButton{
+    padding: 7px;
+    margin-left: 10px;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: black;
+    box-shadow: 2px solid gray;
+    text-shadow: 2px 2px 2px gray;
+}
+
+#searchButton:hover{
+    background-color: red;
+}
+
+#characterSearch{
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.character-card {
+    background: white;
+    padding: 16px;
+    margin: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+    display: inline-block;
+}
+
+.character-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 12px;
+}
+
+#result {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+#logo{
+    margin-left: 500px;
+}
+
+footer{
+    margin: 20px;
+    text-align: center;
+}

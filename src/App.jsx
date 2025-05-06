@@ -1,14 +1,13 @@
 import { useState } from 'react'
 import './css/App.css'
+import Marvel from "./MarvelSearch.jsx"
 
 function App() {
 
 
   return (
     <>
-     <div>
-        <h1 id="title"> Marvel Character Search </h1>
-     </div>
+      <Marvel />
     </>
   )
 }
