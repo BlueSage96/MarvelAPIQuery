@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: 'Avengers';
-  src: url("/fonts/AVENGERS.ttf") format('truetype');
+  src: url("./assets/AVENGERS.ttf") format('truetype');
 }
 
 html, body{

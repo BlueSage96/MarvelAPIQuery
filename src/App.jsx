@@ -6,7 +6,9 @@ function App() {
 
   return (
     <>
-     
+     <div>
+        <h1 id="title"> Marvel Character Search </h1>
+     </div>
     </>
   )
 }
