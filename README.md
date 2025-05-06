@@ -1,7 +1,12 @@
-# MarvelAPIQuery
+# React + Vite
 
-Querying the Marvel API
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Instructions:
+Currently, two official plugins are available:
 
-Use the search bar to type in the name of a Marvel character Wait until after search bar animation is done to press the search button When results load users see the name of the character, an image of the character, and a link to another page This second page shows a gallery of comics the searched character has been in Use the previous button to go back to the search page *Footer has Marvel copyright that leads back to their website.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
