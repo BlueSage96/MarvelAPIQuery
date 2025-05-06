@@ -1,15 +1,12 @@
-import { useState } from 'react'
-import './css/App.css'
-import Marvel from "./MarvelSearch.jsx"
+import './css/App.css';
+import MarvelSearch from "./MarvelSearch.jsx";
 
 function App() {
-
-
   return (
-    <>
-      <Marvel />
-    </>
-  )
+    <div className="App">
+      <MarvelSearch />
+    </div>
+  );
 }
 
 export default App
