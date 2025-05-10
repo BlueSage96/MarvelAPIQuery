@@ -1,11 +1,19 @@
 import "./css/Comics.css"
-import MarvelSearch from './MarvelSearch.jsx';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Comics () {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const character = location.state?.character;
+
+    if (!character) {
+        return <div>No character data available</div>
+    }
+    
     return (
         <>
-        <button id="previousButton" onClick="history.back()">Previous</button>
-        <h1 id="characterTitle">{MarvelSearch.character.name}</h1>
+        <button id="previousButton" onClick={() => navigate(-1)}>Previous</button>
+        <h1 id="characterTitle">{character.name}</h1>
         <div id="comics">
             <ol id="comicsList"></ol>
         </div>

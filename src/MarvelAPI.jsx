@@ -1,8 +1,8 @@
 import md5 from 'md5';
 
 export const MarvelAPI = async (characterName) => {
-    const publicKey = import.meta.env.MARVEL_PUBLIC_KEY;
-    const privateKey = import.meta.env.MARVEL_PRIVATE_KEY;
+    const publicKey = import.meta.env.VITE_MARVEL_PUBLIC_KEY;
+    const privateKey = import.meta.env.VITE_MARVEL_PRIVATE_KEY;
     const ts = new Date().getTime().toString();
     const hash = md5(ts + privateKey + publicKey);
 
