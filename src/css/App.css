@@ -19,3 +19,11 @@
 #root {
   font-family: 'Avengers', sans-serif !important;
 }
+
+body, h1, h2, h3, h4, h5, p, span, div, button, input {
+  font-family: 'Avengers', Arial, sans-serif !important;
+}
+
+#title, .character-info h3, .comic-info h3 {
+  font-family: 'Avengers', Arial, sans-serif !important;
+}
