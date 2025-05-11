@@ -106,9 +106,10 @@ your HTML structure. */
 /* Make sure comics section is below the header */
 .comics-content {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 40px;
     position: relative;
     z-index: 10;
+    padding-top: 20px;
 }
 
 h2.comics-title {
@@ -117,11 +118,15 @@ h2.comics-title {
     padding-bottom: 10px;
     border-bottom: 2px solid #333;
 }
+
+/* Desktop: 2x4 grid (8 comics) */
 .comics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-template-rows: repeat(2, auto); /* 2 rows */
     gap: 25px;
     padding-top: 20px;
+    margin-top: 20px;
 }
 
 .comic-card {
@@ -238,8 +243,22 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Media query for smaller screens */
+/* Media query for smaller screens 
+ Tablet: 3x3 (9 comics)
+*/
+@media (max-width: 992px) {
+    .comics-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, auto);
+    }
+}
+
+/* Smaller tablet 2x4 grid (8 comics) */
 @media (max-width: 768px) {
+    .comics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, auto);
+    }
     .comics-top-section {
         flex-direction: column;
         align-items: flex-start;
@@ -252,5 +271,19 @@ footer a:hover {
 
     .character-header {
         width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .comics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile: 1x8 grid (8 comics) */
+@media (max-width: 480px) {
+    .comics-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(8, auto);
     }
 }

@@ -67,7 +67,7 @@ export default function MarvelSearch() {
                     <div className="bounce3"/>
                 </div>
              )}
-            <img id="logo" src={marvelLogo} alt="Marvel Logo" />
+            
             { error && <div className="error">{error}</div>}
 
              {/* Ensures that characters exists  & is an array before trying to access
@@ -79,8 +79,8 @@ export default function MarvelSearch() {
                     ))}
                 </div>
             )}
-          
-            <footer><a href="http://marvel.com\">Data provided by Marvel. © 2025 MARVEL
+             <img id="logo" src={marvelLogo} alt="Marvel Logo" />
+            <footer><a href="http://marvel.com\">Data provided by Marvel. © 2025
              </a></footer>
         </div>
     )

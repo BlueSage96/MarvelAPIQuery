@@ -28,14 +28,29 @@ export const fetchCharacterComics = async (characterId) => {
     const ts = new Date().getTime().toString();
     const hash = md5(ts + privateKey + publicKey);
 
-    const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?orderBy=onsaleDate&limit=10&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+    // CHange limit to 8 comics for even number on desktop
+    const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?orderBy=-onsaleDate&limit=12&format=comic&formatType=comic&noVariants=true&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
 
     try {
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Marvel API error ${response.status}`);
         }
-        return await response.json();
+
+        const info = await response.json();
+
+        //filter out comics with placeholder images
+        const filteredComics = info.data.results.filter(comic =>
+            comic.thumbnail &&
+            !comic.thumbnail.path.includes('image_not_available') && 
+            !comic.thumbnail.path.includes('4c002e0305708')
+        );
+
+        // limit to 8 comics after filtering
+        info.data.results = filteredComics.slice(0,8);
+
+        return info;
+
     } catch (error) {
         console.error('Error fetching comics data: ', error);
         throw error;
