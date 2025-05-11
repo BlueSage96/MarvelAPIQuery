@@ -13,79 +13,244 @@ body{
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: blue;
+}
+
+.comics-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Create a top section for header and button */
+.comics-top-section {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+    background-color: red;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 /* This option uses inline-block to place the elements side by side without changing 
 your HTML structure. */
-#characterTitle {
+/* #characterTitle {
     display: inline-block;
     vertical-align: middle;
     font-size: 50px;
     margin-left: 550px;
-}
+} */
 
 #previousButton {
-    margin: 30px;
+    min-width: 130px;
+    height: 200px;
+    margin-right: 10px;
     font-size: 20px;
-    padding: 9px;
-    background-color: black;
+    align-self: center;
+    /* padding: 10px 15px; */
+    background-color: blue;
+    color: white; /* Add text color for visibility */
     border-radius: 8px;
     box-shadow: 0 2px 4px gray; /* fixed the box-shadow syntax */
     text-shadow: 2px 2px 2px gray;
-    color: white; /* Add text color for visibility */
-    display: inline-block;
-    vertical-align: middle;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 #previousButton:hover{
-    background-color: red;;
+    background-color: red;
 }
 
-/*Grid layout for comics*/
-#comicsList{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-gap: 20px; /* Space between items */
-    padding: 0;
-    list-style: none;
-    margin-top: 20px;
-    margin-left: 60px;
+.character-header {
+    flex-grow: 1; /* Let the header take up remaining space */
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: blue;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    max-height: 200px; /* Limit the height */
 }
 
-#comicsList li{
-    text-align: center;
-}
-
-#comicsList img{
+.character-header-image {
     width: 200px;
-    height: auto; /* Maintain aspect ratio */
-    display: block;
-    margin: 0 auto 10px auto; /*Center the image & add margin*/
+    height: 200px;
+    object-fit: cover;
+    flex-shrink: 0; /* Prevent image from shrinking */
 }
 
-#comicsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+.character-header-info {
+    padding: 20px;
+    color: white;
+    overflow-y: auto; /* Add scrollling for text if needed*/
+    flex-grow: 1;
+}
+
+.character-header-info h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #e62429;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 1px white;
+}
+
+.character-header-info p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Make sure comics section is below the header */
+.comics-content {
+    width: 100%;
+    margin-top: 15px;
+    position: relative;
+    z-index: 10;
+}
+
+h2.comics-title {
+    color: #e62429;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+}
+.comics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+    gap: 25px;
+    padding-top: 20px;
 }
 
 .comic-card {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
+  background-color: #e62429;
   border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border: 2px solid #ddd;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.comic-card img {
+.comic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.comic-image {
   width: 100%;
-  height: auto;
-  border-radius: 5px;
+  height: 500px;
+  object-fit: cover;
+  /* border-radius: 5px; */
 }
 
-footer{
+.comic-info {
+    padding: 10px;
+    color: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.comic-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.comic-description {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+.comic-date {
+    font-size: 1.0rem;
+    color: white;
+    margin: 0;
+    margin-top: auto;
+}
+
+/* Loading spinner */
+.spinner {
+    margin: 50px auto;
+    width: 70px;
+    text-align: center;
+}
+
+.spinner > div {
+    width: 18px;
+    height: 18px;
+    background-color: #e62429;
+    border-radius: 100%;
+    display: inline-block;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    margin: 0 4px;
+}
+
+.spinner .bounce1 {
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    animation-delay: -0.16s;
+}
+
+@keyframes sk-bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0);
+    } 40% {
+        transform: scale(1.0);
+    }
+}
+
+/* Error message */
+.error {
+    color: #e62429;
+    background-color: rgb(241, 36, 21, 0.5);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px auto;
+    /* max-width: 600px; */
+    text-align: center;
+}
+
+/* Footer */
+footer {
     margin: 20px;
     text-align: center;
+    padding: 20px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: gray;
+    text-decoration: underline;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .comics-top-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #previousButton {
+        margin-bottom: 15px;
+        width: 100%;
+        font-size: 4.0rem;
+    }
+
+    .character-header {
+        width: 100%;
+    }
 }

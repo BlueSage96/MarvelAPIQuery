@@ -13,7 +13,6 @@ html, body{
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: blue;
 }
 
 #title{
@@ -21,6 +20,7 @@ html, body{
     padding-top: 60px;
     text-align: center;
     font-size: 50px;
+    color: white;
 }
 
 #searchForm{
@@ -38,7 +38,7 @@ input[type=text]{
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
-  font-size: 24px;
+  font-size: 25px;
   background-image: url('../assets/searchicon.png');
   background-position: 10px 10px; 
   background-repeat: no-repeat;
@@ -54,50 +54,78 @@ input[type=text]:focus{
 }
 
 #searchButton{
-    padding: 7px;
+    padding: 12px;
     margin-left: 10px;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 25px;
     background-color: black;
+     border: 2px solid #ccc;
+    color: white;
     box-shadow: 2px solid gray;
     text-shadow: 2px 2px 2px gray;
+    justify-content: center;
 }
 
 #searchButton:hover{
     background-color: red;
 }
 
-#characterSearch{
-    margin-left: 20px;
-    margin-right: 10px;
-}
-
-.character-card {
-    background: white;
-    padding: 16px;
-    margin: 12px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 250px;
-    display: inline-block;
-}
-
-.character-card img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 12px;
-}
-
-#result {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
 #logo{
    margin-top: 50px;
+}
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.character-grid:hover {
+    overflow: hidden;
+}
+
+.spinner {
+    margin: 50px auto;
+    width: 70px;
+    text-align: center;
+}
+
+.spinner > div {
+    width: 18px;
+    height: 18px;
+    background-color: #e62429;
+    border-radius: 100%;
+    display: inline-block;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    margin: 0 5px;
+}
+
+.spinner .bounce1 {
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    animation-delay: -0.16s;
+}
+
+@keyframes sk-bouncedelay {
+    0%, 80%, 100% { 
+        transform: scale(0);
+    } 40% { 
+        transform: scale(1.0);
+    }
+}
+
+.error {
+    color: #e62429;
+    background-color: rgba(230, 36, 41, 0.1);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
 }
 
 footer{
