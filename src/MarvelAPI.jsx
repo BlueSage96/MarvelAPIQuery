@@ -6,7 +6,8 @@ export const MarvelAPI = async (characterName) => {
     const ts = new Date().getTime().toString();
     const hash = md5(ts + privateKey + publicKey);
 
-    const url = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${encodeURIComponent(characterName)}&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+    //handles pagination and gets more results
+    const url = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${encodeURIComponent(characterName)}&limit=50&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
 
     try{
         const response = await fetch(url);
@@ -20,7 +21,6 @@ export const MarvelAPI = async (characterName) => {
     }
 };
 
-//new function to fetch comics
 // New function to fetch comics for a character
 export const fetchCharacterComics = async (characterId) => {
     const publicKey = import.meta.env.VITE_MARVEL_PUBLIC_KEY;
@@ -28,9 +28,9 @@ export const fetchCharacterComics = async (characterId) => {
     const ts = new Date().getTime().toString();
     const hash = md5(ts + privateKey + publicKey);
 
-    // CHange limit to 8 comics for even number on desktop
-    const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?orderBy=-onsaleDate&limit=12&format=comic&formatType=comic&noVariants=true&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
-
+     // Increased limit to get more results, then we'll filter and take the first 8
+    const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?orderBy=-onsaleDate&limit=25&format=comic&formatType=comic&noVariants=true&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+    
     try {
         const response = await fetch(url);
         if (!response.ok) {

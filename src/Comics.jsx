@@ -68,7 +68,6 @@ function Comics () {
             
             {/* Comics section */}
             <div className="comics-content">
-                {/* <h2 className="comics-title">Comics</h2> */}
                 
                 {loading && (
                     <div className="spinner">

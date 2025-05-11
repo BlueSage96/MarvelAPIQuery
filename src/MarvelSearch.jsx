@@ -14,20 +14,21 @@ export default function MarvelSearch() {
         if (!query.trim()) return;
         setLoading(true);
         setError(null);
+        setCharacters([]); //clear previous results
 
         try{
             const result = await MarvelAPI(query);
-            setCharacters(result.data.results[0] || null);
-            //Makes sure we're safely checking if result.data & result.data.results exists
-            if(result.data && result.data && result.data.results){
-                setCharacters(result.data.results);
-                if (result.data.results.length === 0){
-                    setError('No character found matching your search.');
-                }
-            } else {
-                //Handle case where the API response doesn't have the expected structure
-                setCharacters([]);
-                setError('Unexpected API response format.')
+            //filter out characters with placeholder images
+            const filteredCharacters = result.data.results.filter(character => 
+                character.thumbnail &&
+                !character.thumbnail.path.includes('image_not_available') &&
+                !character.thumbnail.path.includes('4c002e0305708')
+            );
+
+            setCharacters(filteredCharacters);
+
+            if (filteredCharacters.length === 0) {
+                setError('No characters found matching your search.');
             }
             
         } catch (err) {
