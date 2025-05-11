@@ -1,13 +1,13 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: Avengers;
+    /* font-family: Avengers; */
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Avengers';
     src: url("/fonts/AVENGERS.ttf") format('truetype');
-}
+} */
 
 body{
     height: 100%;
