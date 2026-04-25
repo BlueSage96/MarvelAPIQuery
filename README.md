@@ -1,3 +1,5 @@
+April 25, 2026: I just found out Disney deleted the Marvel API with no announcement! This repo is now useless. I'll check for an alternative in the future. Thanks Disney!!
+
 Marvel Character & Comic Query
 
 DESCRIPTION:
